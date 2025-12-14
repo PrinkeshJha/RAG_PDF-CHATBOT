@@ -1,152 +1,199 @@
-````md
 # 📄 Gemini-RAG-PDF-Chatbot  
 ## 🧠 PDF Question Answering System powered by Gemini
 
-This is a **robust Streamlit application** that implements a **Retrieval-Augmented Generation (RAG)** pipeline to answer questions based on the content of an uploaded **PDF file**.
+A **Streamlit-based AI application** that allows users to **upload PDF documents and ask questions** based on their content using a **Retrieval-Augmented Generation (RAG)** pipeline.
 
-It uses the **Google Gemini API** for both generating responses and creating embeddings, ensuring **high-quality, relevant answers with source citations**.
+The system leverages **Google Gemini** for embeddings and answer generation, combined with **FAISS vector search**, to provide **accurate, contextual, and source-backed responses**.
 
 ---
 
 ## ✨ Features
 
-- 🔐 **Secure Configuration**  
-  Uses `python-dotenv` to safely load the `GOOGLE_API_KEY` from a local `.env` file.
+### 🔐 Secure Configuration
+- Uses `python-dotenv` to securely load sensitive credentials like `GOOGLE_API_KEY`.
 
-- 🧩 **Modular LangChain**  
-  Utilizes the new modularized LangChain packages:
-  - `langchain-text-splitters`
-  - `langchain-google-genai`
+### 🧩 Modular LangChain Architecture
+Built using the latest modular LangChain packages:
+- `langchain-text-splitters`
+- `langchain-google-genai`
 
-- ⚡ **Gemini Integration**  
-  Leverages `gemini-2.5-flash` for fast and efficient question answering.
+### ⚡ Google Gemini Integration
+- Uses **`gemini-2.5-flash`** for fast, efficient, and high-quality responses.
 
-- 🧠 **FAISS Vector Store**  
-  Employs the FAISS library for highly efficient vector search and retrieval.
+### 🧠 FAISS Vector Store
+- Enables efficient similarity search over PDF content.
 
-- 📁 **Robust File Handling**  
-  Uses a `try...finally` block to ensure uploaded temporary PDF files are always cleaned up.
+### 📁 Robust File Handling
+- Temporary PDF files are safely cleaned up using `try...finally` blocks.
 
-- 📌 **Source Citation**  
-  Displays the specific source text chunks used by the LLM to generate the answer, ensuring transparency and traceability.
+### 📌 Source Citations
+- Displays the exact document chunks used to generate answers for full transparency.
+
+### 🖥️ User-Friendly Interface
+- Built with **Streamlit** for a clean and interactive UI.
+
+---
+
+## 🏗️ Architecture Overview
+
+```
+
+PDF Upload
+↓
+Text Extraction
+↓
+Chunking (Text Splitter)
+↓
+Embeddings (Gemini)
+↓
+FAISS Vector Store
+↓
+Retriever
+↓
+Gemini LLM
+↓
+Answer + Source Chunks
+
+````
 
 ---
 
 ## 🚀 Setup and Installation
 
-Follow these steps to get your RAG application running locally.
-
 ### 1️⃣ Clone the Repository
 
 ```bash
-git clone <your-repository-url>
-cd <your-repository-name>
+git clone https://github.com/your-username/Gemini-RAG-PDF-Chatbot.git
+cd Gemini-RAG-PDF-Chatbot
 ````
 
----
-
-### 2️⃣ Create and Activate a Virtual Environment
+### 2️⃣ Create a Virtual Environment (Recommended)
 
 ```bash
 python -m venv venv
-source venv/bin/activate   # macOS / Linux
-# OR
-.\venv\Scripts\activate    # Windows (PowerShell)
+source venv/bin/activate   # On Windows: venv\Scripts\activate
 ```
-
----
 
 ### 3️⃣ Install Dependencies
 
-Ensure your project has a `requirements.txt` file and install all required packages:
+Create a `requirements.txt` file (if not already present):
+
+```txt
+streamlit
+python-dotenv
+langchain
+langchain-text-splitters
+langchain-google-genai
+faiss-cpu
+pypdf
+```
+
+Install the dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
 
----
+### 4️⃣ Configure Environment Variables
 
-### 4️⃣ API Key Configuration
-
-Create a file named `.env` in the root directory of your project:
+Create a `.env` file in the project root:
 
 ```env
-# .env
-# Get your Gemini API key from Google AI Studio
-GOOGLE_API_KEY="YOUR_ACTUAL_GEMINI_API_KEY_HERE"
+GOOGLE_API_KEY=your_google_gemini_api_key_here
 ```
 
-⚠️ **Security Note:**
-**DO NOT** commit your `.env` file to Git.
-Make sure it is included in your `.gitignore`.
+⚠️ **Important**
 
----
+* ❌ Never commit your `.env` file to GitHub
+* ✅ Add `.env` to `.gitignore`
 
-## 💻 Usage
-
-### ▶️ Run the Streamlit App
+### 5️⃣ Run the Application
 
 ```bash
 streamlit run app.py
 ```
 
----
+The application will be available at:
 
-### 🧪 Interact with the System
-
-1. Open the app in your browser at **[http://localhost:8501](http://localhost:8501)**
-2. Upload a PDF document using the file uploader
-3. Wait for the **“Document processed successfully!”** message
-4. Enter your question in the text input field
-5. View the generated answer
-6. Expand the **📌 Source Chunks** section to see the supporting document text
-
----
-
-## ⚙️ Core Technology Stack
-
-| Component     | Library / Model                                     | Role              |
-| ------------- | --------------------------------------------------- | ----------------- |
-| Frontend      | `streamlit`                                         | Web interface     |
-| LLM           | `ChatGoogleGenerativeAI (gemini-2.5-flash)`         | Answer generation |
-| Embeddings    | `GoogleGenerativeAIEmbeddings (text-embedding-004)` | Text to vectors   |
-| Vector Store  | `FAISS`                                             | Similarity search |
-| Orchestration | `RetrievalQA`                                       | RAG workflow      |
-| Text Splitter | `RecursiveCharacterTextSplitter`                    | PDF chunking      |
-
----
-
-## 🎨 Custom Theme (Optional)
-
-Create the following file to customize the Streamlit UI:
-
-**`.streamlit/config.toml`**
-
-```toml
-[theme]
-base="light"
-primaryColor="#00A86B"
-backgroundColor="#F0F8FF"
-secondaryBackgroundColor="#E0EBF5"
-textColor="#000000"
-font="sans serif"
+```
+http://localhost:8501
 ```
 
 ---
 
-## 📺 Additional Resource
+## 🧑‍💻 How to Use
 
-This project follows best practices for writing **clean, professional GitHub README files**.
+1. 📤 Upload a PDF file
+2. ⏳ Wait for embeddings to be generated
+3. ❓ Enter your question in the input box
+4. 📥 Receive:
 
-⭐ If you find this project useful, consider giving it a **star on GitHub**!
+   * ✅ AI-generated answer
+   * 📌 Source document chunks used for the answer
+
+---
+
+## 📂 Project Structure
 
 ```
+Gemini-RAG-PDF-Chatbot/
+│
+├── app.py                # Streamlit application
+├── requirements.txt      # Python dependencies
+├── .env                  # API key (not committed)
+├── .gitignore
+└── README.md
+```
 
-If you want, I can also:
-- ✅ Add **badges** (Python, Streamlit, Gemini, License)
-- ✅ Optimize for **GitHub SEO**
-- ✅ Create a **project architecture diagram**
-- ✅ Write a **LinkedIn / GitHub project description**
+---
 
-Just tell me 👍
+## 🛠️ Technologies Used
+
+* Python
+* Streamlit
+* Google Gemini API
+* LangChain
+* FAISS
+* PyPDF
+* python-dotenv
+
+---
+
+## ⚠️ Limitations
+
+* Large PDFs may take longer to process
+* Performance depends on API rate limits
+* Requires an active internet connection
+* Currently supports text-based PDFs only
+
+---
+
+## 🔮 Future Improvements
+
+* 🔍 OCR support for scanned PDFs
+* 📚 Multi-PDF querying
+* 🧠 Persistent vector storage
+* 🔐 User authentication
+* 🌐 Cloud deployment (AWS / GCP)
+
+---
+
+## 📜 License
+
+This project is licensed under the **MIT License**.
+
+---
+
+## 🤝 Contributions
+
+Contributions, issues, and feature requests are welcome!
+Feel free to fork the repository and submit a pull request.
+
+---
+
+## ⭐ Support
+
+If you found this project helpful, please **star ⭐ the repository** and share it with others!
+
+```
 ```
