@@ -12,7 +12,7 @@ st.set_page_config(page_title="PDF RAG App", layout="wide")
 st.title("📄 PDF Question Answering using RAG")
 
 # Upload PDF
-pdf_file = st.file_uploader("Upload your PDF", type="pdf")
+pdf_file = st.file_uploader("physics.pdf", type="pdf")
 
 if pdf_file:
     with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as tmp:
