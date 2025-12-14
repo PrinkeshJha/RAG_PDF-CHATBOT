@@ -1,20 +1,31 @@
+# =============================================================
+# STREAMLIT APPLICATION
+# =============================================================
 streamlit==1.37.1
 
-# LangChain core
-langchain==0.2.14
-langchain-community==0.2.12
-langchain-openai==0.1.20
+# =============================================================
+# GEMINI/GOOGLE GENERATIVE AI INTEGRATION
+# =============================================================
+# LangChain integration package for Google Gemini/GenAI
+langchain-google-genai>=4.0.0 
+
+# Core LangChain package
+langchain>=0.2.14 
+langchain-community>=0.4.1
+
+# =============================================================
+# UTILITIES AND CORE COMPONENTS
+# =============================================================
+# Environment file management
+python-dotenv>=1.2.1
 
 # PDF processing
 pypdf==4.3.1
 
-# Vector database
+# Vector database (FAISS)
 faiss-cpu==1.8.0.post1
 
-# Embeddings
-sentence-transformers==2.7.0
-torch>=2.0.0
-
-# Utilities
-numpy>=1.24.0
+# Required for PyPDFLoader (often bundled with other utility libraries)
 tqdm>=4.66.0
+numpy>=1.24.0
+
