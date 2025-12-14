@@ -1,0 +1,152 @@
+````md
+# 📄 Gemini-RAG-PDF-Chatbot  
+## 🧠 PDF Question Answering System powered by Gemini
+
+This is a **robust Streamlit application** that implements a **Retrieval-Augmented Generation (RAG)** pipeline to answer questions based on the content of an uploaded **PDF file**.
+
+It uses the **Google Gemini API** for both generating responses and creating embeddings, ensuring **high-quality, relevant answers with source citations**.
+
+---
+
+## ✨ Features
+
+- 🔐 **Secure Configuration**  
+  Uses `python-dotenv` to safely load the `GOOGLE_API_KEY` from a local `.env` file.
+
+- 🧩 **Modular LangChain**  
+  Utilizes the new modularized LangChain packages:
+  - `langchain-text-splitters`
+  - `langchain-google-genai`
+
+- ⚡ **Gemini Integration**  
+  Leverages `gemini-2.5-flash` for fast and efficient question answering.
+
+- 🧠 **FAISS Vector Store**  
+  Employs the FAISS library for highly efficient vector search and retrieval.
+
+- 📁 **Robust File Handling**  
+  Uses a `try...finally` block to ensure uploaded temporary PDF files are always cleaned up.
+
+- 📌 **Source Citation**  
+  Displays the specific source text chunks used by the LLM to generate the answer, ensuring transparency and traceability.
+
+---
+
+## 🚀 Setup and Installation
+
+Follow these steps to get your RAG application running locally.
+
+### 1️⃣ Clone the Repository
+
+```bash
+git clone <your-repository-url>
+cd <your-repository-name>
+````
+
+---
+
+### 2️⃣ Create and Activate a Virtual Environment
+
+```bash
+python -m venv venv
+source venv/bin/activate   # macOS / Linux
+# OR
+.\venv\Scripts\activate    # Windows (PowerShell)
+```
+
+---
+
+### 3️⃣ Install Dependencies
+
+Ensure your project has a `requirements.txt` file and install all required packages:
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+### 4️⃣ API Key Configuration
+
+Create a file named `.env` in the root directory of your project:
+
+```env
+# .env
+# Get your Gemini API key from Google AI Studio
+GOOGLE_API_KEY="YOUR_ACTUAL_GEMINI_API_KEY_HERE"
+```
+
+⚠️ **Security Note:**
+**DO NOT** commit your `.env` file to Git.
+Make sure it is included in your `.gitignore`.
+
+---
+
+## 💻 Usage
+
+### ▶️ Run the Streamlit App
+
+```bash
+streamlit run app.py
+```
+
+---
+
+### 🧪 Interact with the System
+
+1. Open the app in your browser at **[http://localhost:8501](http://localhost:8501)**
+2. Upload a PDF document using the file uploader
+3. Wait for the **“Document processed successfully!”** message
+4. Enter your question in the text input field
+5. View the generated answer
+6. Expand the **📌 Source Chunks** section to see the supporting document text
+
+---
+
+## ⚙️ Core Technology Stack
+
+| Component     | Library / Model                                     | Role              |
+| ------------- | --------------------------------------------------- | ----------------- |
+| Frontend      | `streamlit`                                         | Web interface     |
+| LLM           | `ChatGoogleGenerativeAI (gemini-2.5-flash)`         | Answer generation |
+| Embeddings    | `GoogleGenerativeAIEmbeddings (text-embedding-004)` | Text to vectors   |
+| Vector Store  | `FAISS`                                             | Similarity search |
+| Orchestration | `RetrievalQA`                                       | RAG workflow      |
+| Text Splitter | `RecursiveCharacterTextSplitter`                    | PDF chunking      |
+
+---
+
+## 🎨 Custom Theme (Optional)
+
+Create the following file to customize the Streamlit UI:
+
+**`.streamlit/config.toml`**
+
+```toml
+[theme]
+base="light"
+primaryColor="#00A86B"
+backgroundColor="#F0F8FF"
+secondaryBackgroundColor="#E0EBF5"
+textColor="#000000"
+font="sans serif"
+```
+
+---
+
+## 📺 Additional Resource
+
+This project follows best practices for writing **clean, professional GitHub README files**.
+
+⭐ If you find this project useful, consider giving it a **star on GitHub**!
+
+```
+
+If you want, I can also:
+- ✅ Add **badges** (Python, Streamlit, Gemini, License)
+- ✅ Optimize for **GitHub SEO**
+- ✅ Create a **project architecture diagram**
+- ✅ Write a **LinkedIn / GitHub project description**
+
+Just tell me 👍
+```
