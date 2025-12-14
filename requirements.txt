@@ -6,7 +6,6 @@ streamlit==1.37.1
 # =============================================================
 # GEMINI/GOOGLE GENERATIVE AI INTEGRATION
 # =============================================================
-# LangChain integration package for Google Gemini/GenAI
 langchain-google-genai>=4.0.0 
 
 # Core LangChain package
@@ -16,7 +15,7 @@ langchain-community>=0.4.1
 # =============================================================
 # UTILITIES AND CORE COMPONENTS
 # =============================================================
-# Environment file management
+
 python-dotenv>=1.2.1
 
 # PDF processing
