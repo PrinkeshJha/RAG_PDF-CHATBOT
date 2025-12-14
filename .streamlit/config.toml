@@ -1,0 +1,20 @@
+# .streamlit/config.toml
+
+[theme]
+# Set the base theme to 'dark' or 'light'
+base="dark" 
+
+# Primary accent color (e.g., used for button hover, selected items)
+primaryColor="#00AEEF" 
+
+# Background color for the main content area (dark blue)
+backgroundColor="#00172B" 
+
+# Background color for the sidebar, code blocks, and input fields (lighter dark blue)
+secondaryBackgroundColor="#003554" 
+
+# Text color (light gray/white)
+textColor="#DCDCDC" 
+
+# Font for the app
+font="sans serif"

@@ -10,27 +10,24 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from langchain_classic.chains import RetrievalQA
 
-# =============================================================
+
 # 1. LOAD ENVIRONMENT VARIABLES FIRST
-# =============================================================
-# This line loads the GOOGLE_API_KEY from your .env file into os.environ
+
 load_dotenv()
 
-st.set_page_config(page_title="PDF RAG App (Gemini)", layout="wide")
-st.title("📄 PDF Question Answering using RAG with Gemini")
+st.set_page_config(page_title="PDF RAG App ", layout="wide")
+st.title("📄 PDF QUESTION ANSWERING SYSTEM")
 
-# =============================================================
 # 2. CHECK FOR API KEY
-# =============================================================
-# Check if the API key is now available in the environment
+
 if "GOOGLE_API_KEY" not in os.environ:
     st.error("The GOOGLE_API_KEY environment variable is not set.")
     st.info("Please create a `.env` file in your project root with GOOGLE_API_KEY=\"YOUR_KEY\" or set it as an environment variable.")
     st.stop()
 
-# =============================================================
+
 # 3. STREAMLIT APPLICATION LOGIC
-# =============================================================
+
 # Upload PDF
 pdf_file = st.file_uploader("Upload your pdf", type="pdf")
 
